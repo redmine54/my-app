@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Run tests
+        run: echo "Hello CI"
       - uses: actions/checkout@v4
 
       - name: Set up Python

@@ -9,9 +9,13 @@ on:
     workflows: ["CI"]
     types:
       - completed
+permissions:
+  contents: read
+  packages: write
 
 jobs:
   deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -29,4 +33,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}/my-app:latest
+          tags: ghcr.io/redmine54/my-app:latest
